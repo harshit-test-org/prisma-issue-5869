@@ -1,0 +1,15 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["microsoftSqlServer"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model table {
+  Id    String @id @default(dbgenerated("newid()")) @db.UniqueIdentifier
+  Value Int
+}
+
